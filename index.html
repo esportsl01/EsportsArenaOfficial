@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports Arena - Where Gamers Become Legends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oxanium:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #121212;
+            --accent-blue: #00f3ff;
+            --accent-purple: #bd00ff;
+            --text-primary: #ffffff;
+            --text-secondary: #aaaaaa;
+            --card-bg: #1a1a1a;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oxanium', cursive;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: var(--nav-height);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(189, 0, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: var(--primary-bg);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--secondary-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-blue);
+            border-radius: 12px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Tournaments Section */
+        .tournaments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tournament-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tournament-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.2);
+        }
+
+        .tournament-header {
+            padding: 1.5rem;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            text-align: center;
+        }
+
+        .tournament-content {
+            padding: 1.5rem;
+        }
+
+        .tournament-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tournament-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tournament-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .countdown {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+        }
+
+        /* Teams Section */
+        .teams {
+            background-color: var(--secondary-bg);
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .team-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Registration Form */
+        .registration-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .registration-form h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--secondary-bg);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        /* Community Section */
+        .community {
+            background-color: var(--secondary-bg);
+        }
+
+        .community-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .community-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .community-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .community-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Leaderboard Section */
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .leaderboard-table th {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: var(--primary-bg);
+        }
+
+        .leaderboard-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Blog Section */
+        .blog {
+            background-color: var(--secondary-bg);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+        }
+
+        /* Sponsors Section */
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sponsor-item {
+            background-color: var(--card-bg);
+            height: 100px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sponsor-item i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Chatbot */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .chatbot-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .chatbot-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .chatbot-header {
+            padding: 15px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-title {
+            font-weight: 600;
+        }
+
+        .chatbot-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            margin-left: auto;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+        }
+
+        .bot-message {
+            background: rgba(0, 243, 255, 0.1);
+            border-top-left-radius: 0;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background: rgba(189, 0, 255, 0.1);
+            border-top-right-radius: 0;
+            align-self: flex-end;
+        }
+
+        .chatbot-input {
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .chatbot-input button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .community-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 243, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+            }
+        }
+
+        .glow-effect {
+            animation: glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Esports<span class="logo-accent">_Arena</span></a>
+            
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tournaments">Tournaments</a>
+                <a href="#teams">Teams</a>
+                <a href="#register">Register</a>
+                <a href="#community">Community</a>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-gaming-background-1178-large.mp4" type="video/mp4">
+        </video>
+        <div class="container hero-content">
+            <h1>Where Gamers Become Legends</h1>
+            <p>Join the ultimate competitive gaming platform and showcase your skills in thrilling tournaments</p>
+            <div class="cta-buttons">
+                <a href="#register" class="btn btn-primary">Register Now</a>
+                <a href="#tournaments" class="btn btn-secondary">Apply for Tournament</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Esports Arena</h2>
+                <p>Learn about our mission to build the ultimate gaming community</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>We Build Gaming Legends</h2>
+                    <p>Esports Arena is dedicated to creating the most competitive and engaging gaming platform for players worldwide. We believe in nurturing talent and providing opportunities for gamers to showcase their skills.</p>
+                    <p>Our mission is to build a global gaming community that transcends borders and brings together players, streamers, and esports athletes.</p>
+                    <p>We envision a world where competitive gaming is accessible to everyone, and where talent is recognized and rewarded.</p>
+                </div>
+                
+                <div class="about-image">
+                    <!-- Placeholder for about image -->
+                    <div style="width:100%;height:300px;background:linear-gradient(90deg, #00f3ff, #bd00ff);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                        <i class="fas fa-gamepad" style="font-size:4rem;color:#fff;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments Section -->
+    <section id="tournaments" class="tournaments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tournaments & Events</h2>
+                <p>Compete in thrilling tournaments and showcase your skills</p>
+            </div>
+            
+            <div class="tournaments-grid">
+                <div class="tournament-card">
+                    <div class="tournament-header">
+                        <h3>Valorant Championship</h3>
+                    </div>
+                    <div class="tournament-content">
+                        <p>Join our flagship Valorant tournament with a prize pool of $25,000. Open to teams of all skill levels.</p>
+                        <div class="tournament-meta">
+                            <div class="countdown">
+                                <i class="fas fa-clock"></i>
+                                <span>5 days left</span>
+                            </div>
+                            <a href="#register" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tournament-card">
+                    <div class="tournament-header">
+                        <h3>PUBG Mobile Showdown</h3>
+                    </div>
+                    <div class="tournament-content">
+                        <p>Battle royale at its finest. Compete in squads for a chance to win part of our $15,000 prize pool.</p>
+                        <div class="tournament-meta">
+                            <div class="countdown">
+                                <i class="fas fa-clock"></i>
+                                <span>8 days left</span>
+                            </div>
+                            <a href="#register" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tournament-card">
+                    <div class="tournament-header">
+                        <h3>Free Fire Clash</h3>
+                    </div>
+                    <div class="tournament-content">
+                        <p>Fast-paced action awaits in our Free Fire tournament. $10,000 prize pool and exclusive rewards.</p>
+                        <div class="tournament-meta">
+                            <div class="countdown">
+                                <i class="fas fa-clock"></i>
+                                <span>12 days left</span>
+                            </div>
+                            <a href="#register" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section id="teams" class="teams">
+        <div class="container">
+            <div class="section-title">
+                <h2>Teams & Players</h2>
+                <p>Meet our professional teams and talented players</p>
+            </div>
+            
+            <div class="teams-grid">
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Team Phantom</h3>
+                    <p>Reigning champions of the Valorant Championship Series with 3 consecutive wins.</p>
+                    <a href="#register" class="btn btn-secondary">View Profile</a>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Inferno Squad</h3>
+                    <p>Dominating the PUBG Mobile scene with exceptional strategy and precision.</p>
+                    <a href="#register" class="btn btn-secondary">View Profile</a>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Strike</h3>
+                    <p>Known for their aggressive playstyle and quick victories in Free Fire tournaments.</p>
+                    <a href="#register" class="btn btn-secondary">View Profile</a>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <h3>Dragon Fury</h3>
+                    <p>Rising stars in the competitive scene with innovative strategies and teamwork.</p>
+                    <a href="#register" class="btn btn-secondary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="registration">
+        <div class="container">
+            <div class="section-title">
+                <h2>Register Now</h2>
+                <p>Join our community of competitive gamers</p>
+            </div>
+            
+            <div class="registration-form">
+                <h3>Create Your Account</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" placeholder="Enter your age">
+                    </div>
+                    <div class="form-group">
+                        <label for="ign">In-Game Name (IGN)</label>
+                        <input type="text" id="ign" placeholder="Enter your gaming username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="game">Preferred Game</label>
+                        <select id="game">
+                            <option value="">Select your game</option>
+                            <option value="valorant">Valorant</option>
+                            <option value="pubg">PUBG Mobile</option>
+                            <option value="freefire">Free Fire</option>
+                            <option value="cod">Call of Duty Mobile</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Register Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join Our Community</h2>
+                <p>Connect with gamers worldwide and stay updated</p>
+            </div>
+            
+            <div class="community-content">
+                <div class="community-info">
+                    <div class="community-item">
+                        <div class="community-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <div>
+                            <h4>Discord Server</h4>
+                            <p>Join our active Discord community with over 10,000 members</p>
+                            <a href="#" class="btn btn-secondary">Join Discord</a>
+                        </div>
+                    </div>
+                    
+                    <div class="community-item">
+                        <div class="community-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h4>WhatsApp Group</h4>
+                            <p>Get instant updates and connect with other players</p>
+                            <a href="#" class="btn btn-secondary">Join WhatsApp</a>
+                        </div>
+                    </div>
+                    
+                    <div class="community-item">
+                        <div class="community-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p>Follow us for highlights, updates, and behind-the-scenes content</p>
+                            <a href="#" class="btn btn-secondary">Follow Us</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="registration-form">
+                    <h3>Stay Updated</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="community-email">Email Address</label>
+                            <input type="email" id="community-email" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;">Subscribe</button>
+                    </form>
+                    <p style="text-align:center;margin-top:1rem;font-size:0.8rem;color:#aaa;">Get tournament updates, patch notes, and exclusive content</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>Live Leaderboard</h2>
+                <p>Current standings in ongoing tournaments</p>
+            </div>
+            
+            <div class="leaderboard-table-container">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Points</th>
+                            <th>Wins</th>
+                            <th>K/D Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Team Phantom</td>
+                            <td>2450</td>
+                            <td>12</td>
+                            <td>3.2</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Inferno Squad</td>
+                            <td>2310</td>
+                            <td>11</td>
+                            <td>2.9</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Lightning Strike</td>
+                            <td>2250</td>
+                            <td>10</td>
+                            <td>2.7</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Dragon Fury</td>
+                            <td>2180</td>
+                            <td>9</td>
+                            <td>2.5</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Shadow Clan</td>
+                            <td>2100</td>
+                            <td>8</td>
+                            <td>2.3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Esports News & Updates</h2>
+                <p>Stay informed with the latest in competitive gaming</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Valorant Patch Notes 5.0</h3>
+                        <p>Major changes to agent abilities and map adjustments in the latest update.</p>
+                        <div class="blog-meta">
+                            <span>2 days ago</span>
+                            <span>Patch Notes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Tournament Winners Announcement</h3>
+                        <p>Team Phantom claims victory in the Spring Championship finals.</p>
+                        <div class="blog-meta">
+                            <span>5 days ago</span>
+                            <span>Tournaments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Pro Tips: Improving Your K/D Ratio</h3>
+                        <p>Learn strategies from top players to enhance your gameplay performance.</p>
+                        <div class="blog-meta">
+                            <span>1 week ago</span>
+                            <span>Tips & Tricks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="sponsors">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Partners</h2>
+                <p>Proudly sponsored by industry leaders</p>
+            </div>
+            
+            <div class="sponsors-grid">
+                <div class="sponsor-item">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-keyboard"></i>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="sponsor-item">
+                    <i class="fas fa-server"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Esports Arena</h4>
+                    <p>Where Gamers Become Legends. Join the ultimate competitive gaming platform.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#tournaments">Tournaments</a></li>
+                        <li><a href="#teams">Teams & Players</a></li>
+                        <li><a href="#register">Register</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@esportsarena.com">info@esportsarena.com</a></li>
+                        <li><a href="tel:+-1234567890">+-1 (234) 567-890</a></li>
+                        <li>123 Gaming Street, Esports City</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Esports Arena. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot-btn">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-title">Esports Assistant</div>
+                <div class="chatbot-status"></div>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! I'm your Esports Assistant. How can I help you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message here...">
+                <button><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = 'var(--nav-height)';
+            navLinks.style.right = '0';
+            navLinks.style.backgroundColor = 'var(--primary-bg)';
+            navLinks.style.width = '200px';
+            navLinks.style.padding = '1rem';
+            navLinks.style.gap = '1rem';
+            navLinks.style.borderLeft = '1px solid rgba(0, 243, 255, 0.1)';
+            navLinks.style.borderBottom = '1px solid rgba(0, 243, 255, 0.1)';
+        });
+
+        // Form submission
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your submission! In a real implementation, this would connect to a backend.');
+                form.reset();
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        navLinks.style.display = 'none';
+                    }
+                }
+            });
+        });
+
+        // Chatbot functionality
+        const chatbotBtn = document.querySelector('.chatbot-btn');
+        const chatbotWindow = document.querySelector('.chatbot-window');
+        const chatInput = document.querySelector('.chatbot-input input');
+        const chatSendBtn = document.querySelector('.chatbot-input button');
+        const chatMessages = document.querySelector('.chatbot-messages');
+        
+        chatbotBtn.addEventListener('click', () => {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function handleChatInput() {
+            const text = chatInput.value.trim();
+            if (text === '') return;
+            
+            addMessage(text, true);
+            chatInput.value = '';
+            
+            // Simulate bot response
+            setTimeout(() => {
+                let response = "I'm here to help! You can ask me about registration, tournaments, or anything else about Esports Arena.";
+                
+                if (text.toLowerCase().includes('register') || text.toLowerCase().includes('join')) {
+                    response = "To register, simply go to our Registration section and fill out the form. It's quick and easy!";
+                } else if (text.toLowerCase().includes('tournament') || text.toLowerCase().includes('compete')) {
+                    response = "We have several tournaments available. Check our Tournaments section to see current events and apply.";
+                } else if (text.toLowerCase().includes('fee') || text.toLowerCase().includes('cost')) {
+                    response = "Most of our tournaments are free to enter! Some premium events may have entry fees, which will be clearly stated.";
+                } else if (text.toLowerCase().includes('team') || text.toLowerCase().includes('player')) {
+                    response = "You can join as an individual player or register a full team. Check our Teams section for more information.";
+                }
+                
+                addMessage(response);
+            }, 1000);
+        }
+        
+        chatSendBtn.addEventListener('click', handleChatInput);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleChatInput();
+            }
+        });
+    </script>
+</body>
+</html>
